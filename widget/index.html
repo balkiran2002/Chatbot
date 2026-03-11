@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule-Based Chatbot System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .card-button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.9;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .status {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #4ade80;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #78350f;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Rule-Based Chatbot</h1>
+            <p>Complete chatbot system with admin dashboard and integration</p>
+            <p class="tagline">Intelligent keyword matching • Easy management • Production ready</p>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            <span id="status-text">API is running</span>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Admin Dashboard Card -->
+            <div class="card" onclick="window.location.href='/admin'">
+                <div class="card-icon">📊</div>
+                <div class="card-title">Admin Dashboard</div>
+                <div class="card-description">
+                    Manage your FAQs, add new questions and answers, import/export data, and monitor your chatbot.
+                </div>
+                <button class="card-button">Open Dashboard →</button>
+            </div>
+
+            <!-- Example Website Card -->
+            <div class="card" onclick="window.location.href='/example'">
+                <div class="card-icon">💻</div>
+                <div class="card-title">Example Website</div>
+                <div class="card-description">
+                    See the chatbot in action integrated into a sample website. Test the floating chat icon and matching.
+                </div>
+                <button class="card-button">View Example →</button>
+            </div>
+
+            <!-- API Documentation Card -->
+            <div class="card" onclick="window.location.href='/api/faqs'">
+                <div class="card-icon">🔌</div>
+                <div class="card-title">API & FAQs</div>
+                <div class="card-description">
+                    View all FAQ data in JSON format. Use our RESTful API to integrate with your applications.
+                </div>
+                <button class="card-button">View FAQs →</button>
+            </div>
+
+            <!-- Health Check Card -->
+            <div class="card" onclick="checkHealth()">
+                <div class="card-icon">✅</div>
+                <div class="card-title">API Health</div>
+                <div class="card-description">
+                    Check the status of your chatbot API and ensure everything is running smoothly.
+                </div>
+                <button class="card-button">Check Status →</button>
+            </div>
+
+            <!-- Test Chat Card -->
+            <div class="card" onclick="testChat()">
+                <div class="card-icon">💬</div>
+                <div class="card-title">Test Chat</div>
+                <div class="card-description">
+                    Send a test message directly to the chatbot API and see how the rule-based matching works.
+                </div>
+                <button class="card-button">Test Chat →</button>
+            </div>
+
+            <!-- Documentation Card -->
+            <div class="card" onclick="showDocs()">
+                <div class="card-icon">📚</div>
+                <div class="card-title">Documentation</div>
+                <div class="card-description">
+                    Learn how to integrate the chatbot, use the API, and best practices for FAQ management.
+                </div>
+                <button class="card-button">Read Docs →</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Rule-Based Website Chatbot System</strong></p>
+            <p>Production-ready chatbot with intelligent keyword matching • v1.0.0</p>
+            <p style="margin-top: 15px; font-size: 12px;">
+                🌐 Local Server: http://localhost:5000 | 
+                📱 Share: Get your IP and share http://YOUR-IP:5000
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Check API health
+        async function checkHealth() {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                alert('✅ API Status: ' + data.status);
+            } catch (error) {
+                alert('❌ API Error: ' + error.message);
+            }
+        }
+
+        // Test chat
+        async function testChat() {
+            const message = prompt('Ask a question (e.g., "What are your business hours?")');
+            if (!message) return;
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const data = await response.json();
+                alert('🤖 Answer: ' + data.answer);
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            }
+        }
+
+        // Show docs
+        function showDocs() {
+            const docOptions = `
+Documentation:
+1. Quick Start Guide (QUICKSTART.md)
+2. Full Documentation (README.md)
+3. Integration Guide (INTEGRATION.md)
+4. API Testing (API_TESTING.md)
+5. Best Practices (BEST_PRACTICES.md)
+
+All docs are in the project folder.
+Check the README.md to get started!
+            `;
+            alert(docOptions);
+        }
+
+        // Check API status on load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/api/health');
+                if (response.ok) {
+                    document.getElementById('status-text').textContent = '✅ API is running and ready';
+                }
+            } catch (error) {
+                document.getElementById('status-text').textContent = '⚠️ API connection check';
+            }
+        });
+    </script>
+
+    <!-- Chatbot Widget -->
+    <script src="chatbot-widget.js"></script>
+    <script>
+        // Initialize the chatbot widget on home page
+        ChatbotWidget.init({
+            apiUrl: 'http://localhost:5000',
+            position: 'bottom-right',
+            theme: 'light'
+        });
+    </script>
+</body>
+</html>

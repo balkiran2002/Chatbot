@@ -1,0 +1,94 @@
+{
+  "faqs": [
+    {
+      "id": "1",
+      "question": "What is your company?",
+      "keywords": [
+        "company",
+        "about",
+        "who are you",
+        "what is"
+      ],
+      "answer": "We are a leading digital solutions provider committed to delivering innovative services to our clients."
+    },
+    {
+      "id": "2",
+      "question": "What are your business hours?",
+      "keywords": [
+        "hours",
+        "open",
+        "timing",
+        "when",
+        "available"
+      ],
+      "answer": "We are open Monday to Friday, 9:00 AM to 6:00 PM. We're closed on weekends and public holidays."
+    },
+    {
+      "id": "3",
+      "question": "How can I contact support?",
+      "keywords": [
+        "contact",
+        "support",
+        "help",
+        "email",
+        "phone"
+      ],
+      "answer": "You can contact us via email at support@example.com or call us at +1-800-123-4567. Our support team is available 24/7."
+    },
+    {
+      "id": "4",
+      "question": "What payment methods do you accept?",
+      "keywords": [
+        "payment",
+        "credit card",
+        "bank transfer",
+        "accept",
+        "method"
+      ],
+      "answer": "We accept all major credit cards (Visa, MasterCard, American Express), bank transfers, and digital wallets like PayPal."
+    },
+    {
+      "id": "5",
+      "question": "Do you offer refunds?",
+      "keywords": [
+        "refund",
+        "money back",
+        "return",
+        "cancel"
+      ],
+      "answer": "Yes, we offer a 30-day money-back guarantee on all our services. Contact our support team to initiate a refund."
+    },
+    {
+      "id": "6",
+      "question": "How long does delivery take?",
+      "keywords": [
+        "delivery",
+        "shipping",
+        "time",
+        "how long",
+        "when"
+      ],
+      "answer": "Standard delivery takes 5-7 business days. Express delivery is available for an additional fee and takes 2-3 business days."
+    },
+    {
+      "id": "7",
+      "question": "Is there a free trial?",
+      "keywords": [
+        "free trial",
+        "trial",
+        "test",
+        "free"
+      ],
+      "answer": "Yes! We offer a 14-day free trial for all new users. No credit card required to get started."
+    },
+    {
+      "id": "a1843299-2d43-4f96-8551-a935871bda5a",
+      "question": "How can I check my mail?",
+      "keywords": [
+        "help center",
+        "support"
+      ],
+      "answer": "Contact the help center"
+    }
+  ]
+}
